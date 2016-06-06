@@ -176,9 +176,10 @@ func outputJson(events []interface{}) {
 	for i, event := range events {
 		msg := event.(map[string]interface{})["logmsg"].(string)
 		if i < l-1 {
-			fmt.Printf("  %s,\n", msg)
+			// addition: single-qoutes to avoid literal values in json which can be problematic for alphanumeric strings.
+			fmt.Printf("'  %s',\n", msg)
 		} else {
-			fmt.Printf("  %s\n", msg)
+			fmt.Printf("'  %s'\n", msg)
 		}
 	}
 
